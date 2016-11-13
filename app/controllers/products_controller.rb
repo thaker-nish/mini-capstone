@@ -23,4 +23,23 @@ class ProductsController < ApplicationController
     product.save
     render 'create.html.erb'
   end
+
+  def edit
+    @product = Product.find_by(id: params[:id])
+    render 'edit.html.erb'
+  end
+
+  def update
+    product = Product.find_by(id: params[:id])
+    product.name = params[:name]
+    product.image = params[:image]
+    product.price = params[:price]
+    product.description = params[:description]
+    product.save
+    render 'update.html.erb'
+  end
+
+  def destroy
+    render 'destroy.html.erb'
+  end
 end

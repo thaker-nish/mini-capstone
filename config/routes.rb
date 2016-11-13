@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get '/products' => 'products#index'
   get '/products/new' => 'products#new'
   post '/products' => 'products#create'
-  get '/product2_url' => 'products#product2_method'
-  get '/product3_url' => 'products#product3_method'
   get '/products/:id' => 'products#show'
-  get '/products/:id/edit' => 'products'
+  get '/products/:id/edit' => 'products#edit'
+  patch '/products/:id' => 'products#update'
+  delete '/products/:id' => 'products#destroy'
 end
