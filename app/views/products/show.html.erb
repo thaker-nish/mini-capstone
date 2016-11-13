@@ -51,8 +51,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<h1>Product 2</h1>
-<h4><%= @product2_name %></h4>
-<img class="Image" src= <%=@product2_image%>>
-<p class="Price"><%=@product2.price%></p>
-<p class="Description"><%=@product2.description%></p>
+<h1>Product Info</h1>
+<h4><%= @product.name %></h4>
+<img class="Image" src= <%=@product.image%>>
+<p class="Price"><%=@product.price%></p>
+<p class="Description"><%=@product.description%></p>
+<a href='/products'> Go back to product list</a>
