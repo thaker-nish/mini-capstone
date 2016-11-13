@@ -40,6 +40,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
     render 'destroy.html.erb'
   end
 end

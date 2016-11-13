@@ -56,6 +56,12 @@
 <img class="Image" src= <%=@product.image%>>
 <p class="Price"><%=@product.price%></p>
 <p class="Description"><%=@product.description%></p>
+<div>
 <a href='/products'> Go back to product list</a>
-<p> </p>
-<a href=<%="/products/#{@product.id}/edit"%>> Edit product</a>
+</div>
+<div>
+<a href=<%="/products/#{@product.id}/edit"%>> Edit product</a>  
+</div>
+<div>
+  <%= link_to "Destroy this product!", "/products/#{@product.id}", method: :delete%>
+</div>
