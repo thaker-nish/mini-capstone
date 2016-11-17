@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @product_all = Product.all
-    render 'product_list.html.erb'
+    render 'index.html.erb'
   end
 
   def show
@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
       description: params['description']
     )
     product.save
-    render 'create.html.erb'
+    flash[:success] = 'New product successfully created!'
+    redirect_to '/products'
   end
 
   def edit
@@ -36,12 +37,14 @@ class ProductsController < ApplicationController
     product.price = params[:price]
     product.description = params[:description]
     product.save
-    render 'update.html.erb'
+    flash[:success] = 'Product successfully updated!'
+    redirect_to "/products/#{product.id}"
   end
 
   def destroy
     @product = Product.find_by(id: params[:id])
     @product.destroy
-    render 'destroy.html.erb'
+    flash[:success] = 'Product successfully destroyed!'
+    redirect_to '/products'
   end
 end

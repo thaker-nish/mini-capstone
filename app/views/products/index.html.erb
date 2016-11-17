@@ -1,0 +1,26 @@
+<div class="page-header">
+<div class="jumbotron">
+  <h1>Welcome to the store</h1>
+  <p>The best for less!</p>
+</div>
+</div>
+<!-- <div class="row"> -->
+<%@product_all.each do |product| %>
+  <div class="col-sm-6 col-md-4">
+  <div class="well">
+    <div class="thumbnail">
+      <img class="Image" src= <%=product.image%>>
+      <div class="caption">
+        <h4><a href='/products/<%= product.id%>'> <%=product.name%></a></h4>
+        <p class="Price"><%=number_to_currency(product.price)%></p>
+        <p class="Description"><%=product.description%></p>
+        <p><a href="/products/<%=product.id%>" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- </div> -->
+<%end%>
+
+
+

@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  background-color: #999;
+  text-align: center;
+  color: white;
+  background-image: url('green_cup.png')
+}
+
+.jumbotron{
+  background-color: #000;
+}
+.page-header{
+  background-color: black;
 }
 .Image{
    display: block;
@@ -15,6 +24,9 @@ h1 {
 }
 h4{
   text-align: center;
+}
+h4 a {
+  color: black;
 }
 .Price{
   text-align: center;
