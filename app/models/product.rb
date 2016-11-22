@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  belongs_to :supplier
   def sale_message
     if price.to_i <= 2
       'Discount item!'
@@ -6,7 +7,7 @@ class Product < ApplicationRecord
       'Everyday vaule!'
     end
   end
-  
+
   def tax
     tax = price.to_i * 0.09
   end

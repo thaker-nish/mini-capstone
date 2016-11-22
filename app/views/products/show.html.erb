@@ -1,5 +1,5 @@
 <h1>Product <%=@product.id%></h1>
-<div class="container" class= "center-block">
+<div class="container">
 <div class="center-block" >
   <div class="col-sm-6 col-md-4">
   <div class="well">
@@ -7,6 +7,7 @@
       <img class="Image" src= <%=@product.image%>>
       <div class="caption">
         <h4><%= @product.name %></h4>
+        <p>Sold by <a href= '/suppliers/<%=@supplier.id%>'><%=@product.supplier.name%></a></p>
         <p class="Price">Price: <%=number_to_currency(@product.price)%></p>
         <p class="Price">Tax: <%=number_to_currency(@product.tax)%></p>
         <p class="Price">Total: <%=number_to_currency(@product.total)%></p>

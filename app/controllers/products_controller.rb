@@ -1,6 +1,18 @@
 class ProductsController < ApplicationController
   def index
-    @product_all = Product.all
+    sort = params[:sort]
+    discount = params[:discount]
+    random = params[:random]
+
+    if sort
+      @product_all = Product.order(params[:sort])
+    elsif discount
+      @product_all = Product.where('price < ?', params[:discount])
+    elsif random
+      @product_all = Product.order('RANDOM() LIMIT 1')
+    else
+      @product_all = Product.order(:price)
+    end
     render 'index.html.erb'
   end
 

@@ -1,0 +1,19 @@
+<h1>Add a new supplier!</h1>
+
+<%= form_tag '/suppliers', method: :post do%>
+<div class="form-group">
+  <%= label_tag :name, 'Enter name: '%>
+  <%= text_field_tag :name,'', class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= label_tag :email, 'Enter email: ' %>
+  <%= text_field_tag :email,'', class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= label_tag :phone, 'Enter phone number: ' %>
+  <%= text_field_tag :phone,'', class:"form-control" %>
+</div>
+<div>
+  <%= submit_tag 'Add supplier!', class:"btn btn-primary" %>
+</div>
+<%end%>
