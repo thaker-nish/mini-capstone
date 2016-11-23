@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
     sort = params[:sort]
     discount = params[:discount]
     random = params[:random]
-
     if sort
       @product_all = Product.order(params[:sort])
     elsif discount
@@ -13,10 +12,12 @@ class ProductsController < ApplicationController
     else
       @product_all = Product.order(:price)
     end
+    image = Image.all
     render 'index.html.erb'
   end
 
   def show
+    @supplier = Supplier.find_by(id: params[:id])
     @product = Product.find_by(id: params[:id])
     render 'show.html.erb'
   end

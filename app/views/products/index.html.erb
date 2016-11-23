@@ -9,7 +9,7 @@
   <div class="col-sm-6 col-md-4">
   <div class="well">
     <div class="thumbnail">
-      <img class="Image" src= <%=product.image%>>
+      <img class="Image" src= "<%=product.images.first.url%>">
       <div class="caption">
         <h4><a href='/products/<%= product.id%>'> <%=product.name%></a></h4>
         <p class="Price"><%=number_to_currency(product.price)%></p>
