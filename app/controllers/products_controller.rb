@@ -46,7 +46,6 @@ class ProductsController < ApplicationController
   def update
     product = Product.find_by(id: params[:id])
     product.name = params[:name]
-    product.image = params[:image]
     product.price = params[:price]
     product.description = params[:description]
     product.save
