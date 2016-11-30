@@ -9,6 +9,11 @@
       <div class="caption">
         <h4><%= @product.name %></h4>
         <p>Sold by <a href= '/suppliers/<%=@product.supplier.id%>'><%=@product.supplier.name%></a></p>
+        <p>Categories:
+        <% @product.categories.each do |category|%>
+        <a href= "/products?category_id=<%=category.id%>"><%=category.name%></a>
+          <%end%>
+        </p>
         <p class="Price">Price: <%=number_to_currency(@product.price)%></p>
         <p class="Price">Tax: <%=number_to_currency(@product.tax)%></p>
         <p class="Price">Total: <%=number_to_currency(@product.total)%></p>

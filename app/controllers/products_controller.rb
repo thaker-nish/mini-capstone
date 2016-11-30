@@ -9,6 +9,9 @@ class ProductsController < ApplicationController
       @product_all = Product.where('price < ?', params[:discount])
     elsif random
       @product_all = Product.order('RANDOM() LIMIT 1')
+    elsif params[:category_id] != nil
+      selected_category = Category.find_by(id: params[:category_id])
+      @product_all = selected_category.products
     else
       @product_all = Product.order(:price)
     end
