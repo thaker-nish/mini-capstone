@@ -1,11 +1,10 @@
-<h1>Order summary</h1>
+<h1>Order summary:</h1>
+<% @products.each do |product| %>
+  <h2>Item: <%=product.product.name %> </h2>
+  <h3>Quantity: <%=product.quantity %></h3>
+  <h3>Subtotal: <%=product.order.subtotal%></h3>
+  <h3>Tax: <%= product.order.tax%></h3>
+  <h3>Total: <%=product.order.total%></h3>
+<% end %>
 
-<h3>Order number: <%= @order.id%></h3>
-<h3>Quantity: <%=@order.quantity%></h3>
-<h3>Subtotal: <%=number_to_currency(@order.subtotal)%></h3>
-<h3>Tax: <%=number_to_currency(@order.tax)%></h3>
-<h3>Total: <%=number_to_currency(@order.total)%></h3>
-<h3>Email: <%=@order.user.email%></h3>
-<h3><%=@order.product.name%></h3>
-<img class = "Image" src="<%=@order.product.images.first.url%>">
-<h3>Order place on: <%=@order.created_at.strftime("%A, %d %b %Y %l:%M %p")%></h3>
+

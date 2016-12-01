@@ -21,7 +21,7 @@
         <p class="Description"><%=@product.description%></p>
         <p><a href="/products" class="btn btn-primary" role="button">Back to products</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
 
-<%= form_tag '/orders', method: :post do%>
+<%= form_tag '/carted_products', method: :post do%>
 <div class="form-group">
   <%= hidden_field_tag :product_id, @product.id, class:"form-control" %>
 </div>
@@ -30,7 +30,7 @@
   <%= text_field_tag :quantity,'', class:"form-control" %>
 </div>
 <div>
-  <%= submit_tag 'Order product!', class:"btn btn-primary" %>
+  <%= submit_tag 'Add to cart!', class:"btn btn-primary" %>
 </div>
 <%end%>
       </div>

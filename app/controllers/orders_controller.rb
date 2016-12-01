@@ -1,27 +1,41 @@
 class OrdersController < ApplicationController
 
   def create
-    product = Product.find_by(id: params['product_id'])
-    @subtotal = product.price * params['quantity'].to_i
-    @tax = @subtotal * 0.09
-    @total = @subtotal + @tax
+    carted_products = current_user.carted_products.where(status: "carted")
+
+    subtotal = 0
+    carted_products.each do |carted_product|
+      subtotal += carted_product.product.price * carted_product.quantity
+      puts subtotal
+    end
+
+    tax = subtotal * 0.09
+    total = subtotal + tax
 
     order = Order.new(
-      product_id: params['product_id'],
-      quantity: params['quantity'],
       user_id: current_user.id,
-      subtotal: @subtotal,
-      tax: @tax,
-      total: @total,
+      subtotal: subtotal,
+      tax: tax,
+      total: total
     )
+    
     order.save
+
+    last_order = Order.last
+
+    carted_products.each do |carted_product|
+      carted_product.status = "purchased"
+      carted_product.order_id = last_order.id
+      carted_product.save
+    end
+
     flash[:success] = "Your order was successfully created!"
-    redirect_to "/orders/#{order.id}"
+    redirect_to "/orders/#{current_user.orders.last.id}"
   end
 
   def show
-    @product = Product.find_by(id: params['product_id'])
-    @order = Order.find_by(id: params[:id])
+    last_order = Order.last
+    @products = current_user.carted_products.where(status: "purchased", order_id: last_order.id)
     render 'show.html.erb'
   end
 
