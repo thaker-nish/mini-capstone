@@ -3,6 +3,7 @@
 <% @carted_products.each do |carted_product| %>
 <h3>Name: <%=carted_product.product.name%></h3>
 <h3>Price: <%=carted_product.product.price%></h3>
+<h3>Quantity: <%=carted_product.quantity%></h3>
 <img class="Image" src="<%=carted_product.product.images.first.url%>">
 <h3>Description: <%=carted_product.product.description%></h3>
 <div><%= link_to 'Remove', "/carted_products/#{carted_product.id}", method: :delete, class:"btn btn-primary" %></div>

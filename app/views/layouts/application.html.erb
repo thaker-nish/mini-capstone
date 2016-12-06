@@ -23,9 +23,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/products">Home <span class="sr-only">(current)</span></a></li>
+        <%if current_user && current_user.admin%>
         <li><a href="/products/new">Create new product</a></li>
+        <%end%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort products <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/products?sort=price">Sort by price(low to high)</a></li>
             <li><a href="/products?sort=price desc">Sort by price(high to low)</a></li>
@@ -46,11 +48,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user%>
         <li><a href="/signup">Signup</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="/login">Login</a></li>
       <%else%>
         <li>Welcome, <%=current_user.name%></li>
           <li><a href="/carted_products">Shopping cart</a></li>
-        <li><a href="logout">Logout</a></li>
+        <li><a href="/logout">Logout</a></li>
         <%end%>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>

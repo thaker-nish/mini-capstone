@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
   def index
     sort = params[:sort]
     discount = params[:discount]
@@ -47,13 +49,16 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find_by(id: params[:id])
-    product.name = params[:name]
-    product.price = params[:price]
-    product.description = params[:description]
-    product.save
+    @product = Product.find_by(id: params[:id])
+    @product.name = params[:name]
+    @product.price = params[:price]
+    @product.description = params[:description]
+    if @product.save
     flash[:success] = 'Product successfully updated!'
-    redirect_to "/products/#{product.id}"
+    redirect_to "/products/#{@product.id}"
+  else
+    render 'edit.html.erb'
+  end
   end
 
   def destroy

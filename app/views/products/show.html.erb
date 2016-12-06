@@ -19,8 +19,8 @@
         <p class="Price">Total: <%=number_to_currency(@product.total)%></p>
         <p><%=@product.sale_message%></p>
         <p class="Description"><%=@product.description%></p>
-        <p><a href="/products" class="btn btn-primary" role="button">Back to products</a> <a href="#" class="btn btn-default" role="button">Add to cart</a></p>
-
+        <p><a href="/products" class="btn btn-primary" role="button">Back to products</a></p>
+<% if current_user %>
 <%= form_tag '/carted_products', method: :post do%>
 <div class="form-group">
   <%= hidden_field_tag :product_id, @product.id, class:"form-control" %>
@@ -33,14 +33,17 @@
   <%= submit_tag 'Add to cart!', class:"btn btn-primary" %>
 </div>
 <%end%>
+<%end%>
       </div>
     </div>
   </div>
 </div>
 </div>
+<% if current_user && current_user.admin %>
 <div>
 <a class="btn btn-default" role="button" href=<%="/products/#{@product.id}/edit"%>> Edit product</a>  
 </div>
 <div class="btn btn-default" role="button">
   <%= link_to "Destroy this product!", "/products/#{@product.id}", method: :delete%>
 </div>
+<%end%>

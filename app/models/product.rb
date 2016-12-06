@@ -7,6 +7,10 @@ class Product < ApplicationRecord
   has_many :categories, through: :category_products
   has_many :carted_products
   has_many :users, through: :carted_products
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :price, presence: true
+  validates :price, numericality: { greater_than: 0 }
   def sale_message
     if price.to_i <= 2
       'Discount item!'
